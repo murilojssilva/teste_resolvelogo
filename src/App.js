@@ -65,12 +65,12 @@ function App() {
           <h1>O que aconteceu?</h1>
         </div>
         <ul>
-          <li onClick={(e) => setPersonalCase(e.currentTarget.textContent)}>Atraso <img className="icons-cases" src={delay} alt="Delay" /></li>
-          <li onClick={(e) => setPersonalCase(e.currentTarget.textContent)}>Cancelamento <img className="icons-cases" src={cancelled} alt="Cancelled" /></li>
-          <li onClick={(e) => setPersonalCase(e.currentTarget.textContent)}>Extravio de bagagem <img className="icons-cases" src={lost} alt="Lost" /></li>
-          <li onClick={(e) => setPersonalCase(e.currentTarget.textContent)}>Dano nas bagagens <img className="icons-cases" src={brokenluggage} alt="Broken Luggage" /></li>
-          <li onClick={(e) => setPersonalCase(e.currentTarget.textContent)}>No-show <img className="icons-cases" src={noshow} alt="No-show" /></li>
-          <li onClick={(e) => setPersonalCase(e.currentTarget.textContent)}>Overbooking <img className="icons-cases" src={overbooking} alt="Overbooking" /></li>
+          <li onClick={(e) => setPersonalCase("Atraso")}>Atraso <img className="icons-cases" src={delay} alt="Delay" /></li>
+          <li onClick={(e) => setPersonalCase("Cancelamento")}>Cancelamento <img className="icons-cases" src={cancelled} alt="Cancelled" /></li>
+          <li onClick={(e) => setPersonalCase("Dano nas bagagens")}>Dano nas bagagens <img className="icons-cases" src={brokenluggage} alt="Broken Luggage" /></li>
+          <li onClick={(e) => setPersonalCase("Extravio de bagagem")}>Extravio de bagagem <img className="icons-cases" src={lost} alt="Lost" /></li>
+          <li onClick={(e) => setPersonalCase("No-show")}>No-show <img className="icons-cases" src={noshow} alt="No-show" /></li>
+          <li onClick={(e) => setPersonalCase("Overbooking")}>Overbooking <img className="icons-cases" src={overbooking} alt="Overbooking" /></li>
         </ul>
       </>
       :
