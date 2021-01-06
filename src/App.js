@@ -2,6 +2,12 @@ import { useState } from "react";
 import up from "./assets/arrow-up.svg"
 import down from "./assets/arrow-down.svg"
 import negative from "./assets/negativo.svg"
+import cancelled from "./assets/cancelled.svg"
+import delay from "./assets/delay.svg"
+import lost from "./assets/lost.svg"
+import brokenluggage from "./assets/broken-padlock.svg"
+import overbooking from "./assets/overbooking.png"
+import noshow from "./assets/noshow.png"
 
 import './App.css';
 
@@ -45,7 +51,7 @@ function App() {
       </div>
         <ul>
           <li onClick={() => setYears(0)}>Mais de 2 anos <img className="case-arrow" src={up} alt="Mais de 2 anos" /></li>
-          <li onClick={() => setYears(2)}>Menos de 2 anos <img className="case-arrow" src={up} alt="Mais de 2 anos" /></li>
+          <li onClick={() => setYears(2)}>Menos de 2 anos <img className="case-arrow" src={down} alt="Mais de 2 anos" /></li>
         </ul>
       </>
       :
@@ -59,12 +65,12 @@ function App() {
           <h1>O que aconteceu?</h1>
         </div>
         <ul>
-          <li onClick={(e) => setPersonalCase(e.currentTarget.textContent)}>Atraso</li>
-          <li onClick={(e) => setPersonalCase(e.currentTarget.textContent)}>Cancelamento</li>
-          <li onClick={(e) => setPersonalCase(e.currentTarget.textContent)}>Extravio de bagagem</li>
-          <li onClick={(e) => setPersonalCase(e.currentTarget.textContent)}>Dano nas bagagens</li>
-          <li onClick={(e) => setPersonalCase(e.currentTarget.textContent)}>No-show</li>
-          <li onClick={(e) => setPersonalCase(e.currentTarget.textContent)}>Overbooking</li>
+          <li onClick={(e) => setPersonalCase(e.currentTarget.textContent)}>Atraso <img className="icons-cases" src={delay} alt="Delay" /></li>
+          <li onClick={(e) => setPersonalCase(e.currentTarget.textContent)}>Cancelamento <img className="icons-cases" src={cancelled} alt="Cancelled" /></li>
+          <li onClick={(e) => setPersonalCase(e.currentTarget.textContent)}>Extravio de bagagem <img className="icons-cases" src={lost} alt="Lost" /></li>
+          <li onClick={(e) => setPersonalCase(e.currentTarget.textContent)}>Dano nas bagagens <img className="icons-cases" src={brokenluggage} alt="Broken Luggage" /></li>
+          <li onClick={(e) => setPersonalCase(e.currentTarget.textContent)}>No-show <img className="icons-cases" src={noshow} alt="No-show" /></li>
+          <li onClick={(e) => setPersonalCase(e.currentTarget.textContent)}>Overbooking <img className="icons-cases" src={overbooking} alt="Overbooking" /></li>
         </ul>
       </>
       :
