@@ -17,6 +17,7 @@ function App() {
   const [years,setYears] = useState(1);
   const [timeLate,setTimeLate] = useState("")
   const [personalCase,setPersonalCase]= useState("");
+  const [misdirectionTime,setMisdirectionTime] = useState("")
   return (
     <div className="cases-selector">
       <div className="container">
@@ -68,7 +69,7 @@ function App() {
           <li onClick={(e) => setPersonalCase("Atraso")}>Atraso <img className="icons-cases" src={delay} alt="Delay" /></li>
           <li onClick={(e) => setPersonalCase("Cancelamento")}>Cancelamento <img className="icons-cases" src={cancelled} alt="Cancelled" /></li>
           <li onClick={(e) => setPersonalCase("Dano nas bagagens")}>Dano nas bagagens <img className="icons-cases" src={brokenluggage} alt="Broken Luggage" /></li>
-          <li onClick={(e) => setPersonalCase("Extravio de bagagem")}>Extravio de bagagem <img className="icons-cases" src={lost} alt="Lost" /></li>
+          <li onClick={(e) => setPersonalCase("Extravio de bagagens")}>Extravio de bagagens <img className="icons-cases" src={lost} alt="Lost" /></li>
           <li onClick={(e) => setPersonalCase("No-show")}>No-show <img className="icons-cases" src={noshow} alt="No-show" /></li>
           <li onClick={(e) => setPersonalCase("Overbooking")}>Overbooking <img className="icons-cases" src={overbooking} alt="Overbooking" /></li>
         </ul>
@@ -83,7 +84,7 @@ function App() {
       <>
       </>
       }
-      { timeLate === "" && (personalCase === "Atraso" || personalCase === "Cancelamento" || personalCase === "Overbooking") ?  
+      { misdirectionTime === "" && timeLate === "" && (personalCase === "Atraso" || personalCase === "Cancelamento" || personalCase === "Overbooking") ?  
       <>
         <div className="cases-selector-title">
           <h1>Qual foi o tempo total de atraso até a chegada ao destino?</h1>
@@ -99,15 +100,15 @@ function App() {
       <>
       </>
       }
-      { timeLate === "" && personalCase === "Extravio de bagagens" ?
+      { misdirectionTime === "" && timeLate === "" && personalCase === "Extravio de bagagens" ?
       <>
         <div className="cases-selector-title">
           <h1>Por quanto tempo sua bagagem permaneceu extraviada?</h1>
         </div>
         <ul>
-          <li>Ainda não recebi minha bagagem.</li>
-          <li>Menos de 72h</li>
-          <li>Mais de 72h</li>
+          <li onClick={(e) => setMisdirectionTime(e.currentTarget.textContent)}>Ainda não recebi minha bagagem</li>
+          <li onClick={(e) => setMisdirectionTime(e.currentTarget.textContent)}>Menos de 72h</li>
+          <li onClick={(e) => setMisdirectionTime(e.currentTarget.textContent)}>Mais de 72h</li>
         </ul>
       </>
       :
@@ -115,14 +116,14 @@ function App() {
       </>
       }
       {
-        personalCase === "No-show" || personalCase === "Dano nas bagagens" || ((personalCase === "Atraso" || personalCase === "Cancelamento" || personalCase === "Overbooking") && (timeLate === "Mais de 4h" || timeLate === "Não cheguei ao destino final"))  ?
+        (personalCase === "No-show" || personalCase === "Dano nas bagagens" || ((personalCase === "Atraso" || personalCase === "Cancelamento" || personalCase === "Overbooking") && (timeLate === "Mais de 4h" || timeLate === "Não cheguei ao destino final"))) || (misdirectionTime === "Ainda não recebi minha bagagem" || misdirectionTime === "Mais de 72h")  ?
         <>
         <div className="cases-selector-title">
           <h1>Conte-nos o seu caso</h1>
         </div>
         <p>Vou copiar aquela caixa de mensagens aqui</p>
         </>
-        : (personalCase === "Atraso" || personalCase === "Cancelamento" || personalCase === "Overbooking") && (timeLate === "Não houve atraso" || timeLate === "Menos de 4h") ?
+        : ((personalCase === "Atraso" || personalCase === "Cancelamento" || personalCase === "Overbooking") && (timeLate === "Não houve atraso" || timeLate === "Menos de 4h")) || misdirectionTime === "Menos de 72h" ?
         <>
           <div className="cases-selector-title">
             <img src={negative} className="negative-img" alt="negative" />
